@@ -5,7 +5,7 @@
 \alias{disabilitymobility}
 \title{Disability mobility data}
 \format{
-A data frame with 86521 rows and 40 columns
+A data frame with 86521 rows (each row is a person) and 40 columns
 \describe{
 \item{household_id}{Household identifier.}
 \item{person_id}{Person identifier.}
@@ -39,14 +39,14 @@ A data frame with 86521 rows and 40 columns
 \item{count_of_bike_trips}{Count of bike trips in past week.}
 \item{count_of_walk_trips}{Count of walk trips in past week.}
 \item{count_of_online_delivery}{Count of times purchased online for delivery in last 30 days.}
-\item{avg_num_of_people_on_trip}{Average number of people on the respondent's trip including the respondent.}
-\item{avg_trip_distance_in_miles}{Average trip distance in miles.}
-\item{avg_trip_duration_in_minutes}{Average trip duration in minutes.}
-\item{shopping_trip}{Number of shopping trips on the respondent's travel day. A travel day is a 24 hour day that starts at 4 am (local time) of the assigned travel day and ends at 3:59 am of the following day. The NHTS randomly assigns the travel days for one-seventh of the sample addresses to each day of the week and the remaining six-sevenths of the households to evenly across weekdays (Monday to Friday). The following variables are related to trip information on travel day.}
-\item{social_recreational_trip}{Number of social or recreational trips on the respondent's travel day.}
-\item{other_home_based_trip}{Number of other home-based trips on the respondent's travel day.}
-\item{work_trip}{Number of work trips on the respondent's travel day.}
-\item{other_non_home_based_trip}{Number of other non home-based trips on the respondent's travel day.}
+\item{avg_num_of_people_on_trip}{Average number of people on the respondent's trip including the respondent on the respondent's travel day. A travel day is a 24 hour day that starts at 4 am (local time) of the assigned travel day and ends at 3:59 am of the following day. The NHTS randomly assigns the travel days for one-seventh of the sample addresses to each day of the week and the remaining six-sevenths of the households to evenly across weekdays (Monday to Friday). The following variables are related to trip information on travel day.}
+\item{avg_trip_distance_in_miles}{Average trip distance in miles on the respondent's travel day.}
+\item{avg_trip_duration_in_minutes}{Average trip duration in minutes on the respondent's travel day.}
+\item{shopping_trip}{Whether having shopping trips on the respondent's travel day.}
+\item{social_recreational_trip}{Whether having social or recreational trips on the respondent's travel day.}
+\item{other_home_based_trip}{Whether having other home-based trips on the respondent's travel day.}
+\item{work_trip}{Whether having work trips on the respondent's travel day.}
+\item{other_non_home_based_trip}{Whether having other non home-based trips on the respondent's travel day.}
 }
 }
 \source{

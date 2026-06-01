@@ -11,8 +11,6 @@ trip_selected <- trip |>
                 TRIPPURP, # Generalized purpose of trip, home-based and non-home based
                 GASPRICE, # Price of gasoline, in cents, on respondent's travel day
                 NUMONTRP, # Number of people on trip including respondent
-                TRPACCMP, # Count of People on Trip
-                TRPMILAD, # Trip distance in miles, adjusted for comparability to past
                 TRPMILES, # Trip distance in miles, derived from route geometry returned
                 TRVLCMIN, # Trip Duration in Minutes
                 VMT_MILE) |>  # Trip distance in miles for personally driven vehicle trips
@@ -59,7 +57,6 @@ per_selected <- per |>
                 YEARMILE, # Miles personally driven in all vehicles
                 PTUSED, # Count of public transit usage
                 DELIVER, # Count of times purchased online for delivery in last 30 days
-                CNTTDTR, # Count of person trips on travel day
                 URBRUR, # Household in urban/rural area
                 EDUC, # Educational attainment
                 HHSTATE # State
@@ -192,15 +189,15 @@ per_selected_join_rename <- per_selected_join |>
          avg_trip_distance_in_miles = Avg_trip_distance,
          avg_trip_duration_in_minutes = Avg_trip_duration,
          trip_purpose = TRIPPURP,
-         number_of_person_trips_on_travel_day = CNTTDTR,
          urban_rural = URBRUR,
          state = HHSTATE
   ) |>
   dplyr::select(-MEDCOND)
 
 per_selected_join_wider <- per_selected_join_rename |>
-  pivot_wider(names_from = "trip_purpose",
-              values_from = "number_of_person_trips_on_travel_day")
+  mutate(trip_purpose_val = 1) |>
+  pivot_wider(names_from = trip_purpose,
+              values_from = trip_purpose_val)
 per_selected_join_wider[is.na(per_selected_join_wider)] <- 0
 per_selected_join_final <- per_selected_join_wider |>
   group_by(household_id, person_id, travel_disability, sex, race, hispanic_ethnicity, nativity, age, education, self_rated_health, employment_status, household_income, household_structure, population_density, urban_rural, state, driver_status, cane, manual_wheelchair, crutches, dog, motorized_wheelchair, scooter, white_cane, walker, other_accommodation) |>
@@ -219,6 +216,8 @@ per_selected_join_final <- per_selected_join_wider |>
                    other_non_home_based_trip = sum(other_non_home_based_trip),
                    shopping_trip = sum(shopping_trip)
   )
+per_selected_join_final <- per_selected_join_final |>
+  mutate(across(c(other_home_based_trip:shopping_trip), ~ifelse(.x==1, TRUE, FALSE)))
 
 col_order <- c("household_id", "person_id", "travel_disability", "sex", "race", "hispanic_ethnicity", "nativity", "age", "education", "self_rated_health", "employment_status", "household_income", "household_structure", "population_density", "urban_rural", "state", "driver_status", "cane", "manual_wheelchair", "crutches", "dog", "motorized_wheelchair", "scooter", "white_cane", "walker", "other_accommodation", "yearly_miles_personally_driven", "count_of_public_transit_usage", "count_of_rideshare_app_usage", "count_of_bike_trips", "count_of_walk_trips", "count_of_online_delivery", "avg_num_of_people_on_trip", "avg_trip_distance_in_miles", "avg_trip_duration_in_minutes", "shopping_trip", "social_recreational_trip", "other_home_based_trip", "work_trip", "other_non_home_based_trip")
 

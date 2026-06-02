@@ -1,0 +1,83 @@
+---
+title: "disabilitymobility"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{disabilitymobility}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Setup
+
+```{r eval = FALSE}
+devtools::install()
+```
+
+```{r setup, message = FALSE, warning = FALSE}
+library(disabilitymobility)
+library(tidyverse)
+```
+
+## Single Table Wrangling and Data Visualization Example
+
+```{r, message = FALSE, warning = FALSE, out.width = "70%"}
+#> Filtered to people who have a travel disability
+disabilitymobility_disabled <- disabilitymobility |>
+  filter(travel_disability != "No_disability")
+
+#> Sort facet_wrap labels
+disabilitymobility_disabled$travel_disability_sort_val <- factor(disabilitymobility_disabled$travel_disability, levels = c("6_months_or_less_disability", "More_than_6_months_of_disability", "Lifelong_disability"), labels = c("6 Months or Less Disability", "More Than 6 Months of Disability", "Lifelong Disability"))
+
+#> Plot Use of Public Transit in Last Month by Disabled People
+ggplot(data = disabilitymobility_disabled, 
+       aes(x = count_of_public_transit_usage)) + 
+  geom_histogram(bins = 25, color = "white") + 
+  facet_wrap(~travel_disability_sort_val) + 
+  labs(title = "Use of Public Transit in Last Month by Disabled People", 
+       x = "Count of Public Transit Usage", 
+       y = "Count of Individuals") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 3),
+        axis.text = element_text(size = 5),
+        axis.title = element_text(size = 5),
+        title = element_text(size = 5))
+
+#> Summary statistics of public transit usage by disabled people who use a walker
+disabilitymobility_disabled |>
+  filter(walker == "True") |>
+  group_by(travel_disability) |>
+  summarize(public_transit_usage_median = median(count_of_public_transit_usage),
+            public_transit_usage_mean = mean(count_of_public_transit_usage),
+            public_transit_usage_sd = sd(count_of_public_transit_usage))
+
+#> Filtered to people who have a travel disability with public transit usage
+disabled_public_transit_travel <- disabilitymobility_disabled |>
+  filter(count_of_public_transit_usage > 0)
+
+#> Plot Public Transit Usage in Last Month By Disabled Travelers With and Without Walkers
+ggplot(data = disabled_public_transit_travel, 
+       aes(x = count_of_public_transit_usage, 
+           y = walker, 
+           fill = walker)) +
+  geom_boxplot() +
+  facet_wrap(~travel_disability_sort_val) +
+  labs(title = "Public Transit Usage in Last Month \nBy Disabled Travelers With and Without Walkers",
+       fill = "Walker",
+       x = "Count of Public Transit Usage", 
+       y = "Walker") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 2),
+        axis.text = element_text(size = 4),
+        axis.title = element_text(size = 4),
+        title = element_text(size = 4),
+        legend.text = element_text(size = 4),
+        legend.title = element_text(size = 4)) +
+  scale_fill_manual(values = c("indianred1", "palegreen3"))
+```

@@ -1,4 +1,4 @@
-#' Disability mobility data
+#' Tripaccess data
 #'
 #' Include disability and other demographic as well as mobility and trip categorical and numeric variables for data visualization and single table analysis.
 #'
@@ -46,4 +46,4 @@
 #'   \item{other_non_home_based_trip}{Whether having other non home-based trips on the respondent's travel day.}
 #' }
 #' @source <https://nhts.ornl.gov/>
-"disabilitymobility"
+"tripaccess"

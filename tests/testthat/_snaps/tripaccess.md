@@ -1,7 +1,7 @@
 # datasets are unchanged
 
     Code
-      cat(format(tidytree::as_tibble(disabilitymobility)[1:3, 1:5])[-3L], sep = "\n")
+      cat(format(tidytree::as_tibble(tripaccess)[1:3, 1:5])[-3L], sep = "\n")
     Output
       # A tibble: 3 x 5
         household_id person_id travel_disability sex    race 
@@ -12,14 +12,14 @@
 ---
 
     Code
-      nrow(disabilitymobility)
+      nrow(tripaccess)
     Output
       [1] 86521
 
 ---
 
     Code
-      ncol(disabilitymobility)
+      ncol(tripaccess)
     Output
       [1] 40
 

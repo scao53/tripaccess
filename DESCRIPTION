@@ -1,18 +1,18 @@
 Package: tripaccess
-Title: Disability and mobility datasets
+Title: American Travel Behavior and Access Datasets
 Version: 0.0.0.9000
 Authors@R: c(
     person("Shiya", "Cao", email = "scao53@smith.edu", role = c("aut", "cre")),
     person("Amber", "Zhang", email = "lzhang35@smith.edu", role = c("ctb")),
     person("Anna", "Zhao", email = "azhao93@smith.edu", role = c("ctb")),
     person("Smith College", role = c("cph")))
-Description: Subsets of data from the national household travel survey. The disabilitymobility data includes disability, mobility, and other demographic categorical and numeric variables for data visualization and single table analysis.
+Description: Subsets of data from the national household travel survey. The tripaccess data includes disability and other demographic, mobility, and trip categorical and numeric variables for data visualization and single table analysis.
 License: CC0 | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-URL: https://github.com/scao53/disabilitymobility
-BugReports: https://github.com/scao53/disabilitymobility/issues
+URL: https://github.com/scao53/tripaccess
+BugReports: https://github.com/scao53/tripaccess/issues
 Depends: 
     R (>= 3.5)
 LazyData: true

@@ -1,4 +1,4 @@
-## code to prepare `disabilitymobility` dataset goes here
+## code to prepare `tripaccess` dataset goes here
 
 library(tidyverse)
 trip <- read_csv("~/DisabilityInclusionAnalyticsLab/data_sources/national_household_travel_survey/trippub.csv")
@@ -221,8 +221,8 @@ per_selected_join_final <- per_selected_join_final |>
 
 col_order <- c("household_id", "person_id", "travel_disability", "sex", "race", "hispanic_ethnicity", "nativity", "age", "education", "self_rated_health", "employment_status", "household_income", "household_structure", "population_density", "urban_rural", "state", "driver_status", "cane", "manual_wheelchair", "crutches", "dog", "motorized_wheelchair", "scooter", "white_cane", "walker", "other_accommodation", "yearly_miles_personally_driven", "count_of_public_transit_usage", "count_of_rideshare_app_usage", "count_of_bike_trips", "count_of_walk_trips", "count_of_online_delivery", "avg_num_of_people_on_trip", "avg_trip_distance_in_miles", "avg_trip_duration_in_minutes", "shopping_trip", "social_recreational_trip", "other_home_based_trip", "work_trip", "other_non_home_based_trip")
 
-disabilitymobility <- per_selected_join_final[, col_order]
+tripaccess <- per_selected_join_final[, col_order]
 
-save(disabilitymobility, file = "data/disabilitymobility.rda", compress = "xz")
+save(tripaccess, file = "data/tripaccess.rda", compress = "xz")
 
-usethis::use_data(disabilitymobility, overwrite = TRUE, compress = "xz")
+usethis::use_data(tripaccess, overwrite = TRUE, compress = "xz")

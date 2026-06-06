@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(disabilitymobility)
+library(tripaccess)
 
-test_check("disabilitymobility")
+test_check("tripaccess")

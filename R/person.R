@@ -1,0 +1,41 @@
+#' Person data
+#'
+#' Include disability, mobility, and other demographic categorical and numeric variables.
+#'
+#' @format A data frame with 99564 rows (each row is a person) and 32 columns
+#' \describe{
+#'   \item{household_id}{Household identifier. Use this variable to join the person dataset and the house dataset. Use both this variable and person_id to join the person dataset and the trip dataset.}
+#'   \item{person_id}{Person identifier. Use both this variable and household_id to join the person dataset and the trip dataset.}
+#'   \item{travel_disability}{How long the respondent has had a medical condition that makes it difficult to travel outside of home. Values include 6_months_or_less_disability, More_than_6_months_of_disability, Lifelong_disability, and No_disability.}
+#'   \item{sex}{Sex of the respondent. Values include Male and Female.}
+#'   \item{race}{Race of the respondent. Values include White, Black, Asian, American Indian, Hawaiian/Pacific Islander, Multiracial, and Other.}
+#'   \item{hispanic_ethnicity}{Hispanic or Latino origin. Values include Hispanic and Non-Hispanic.}
+#'   \item{nativity}{Born in United States. Values include Yes and No.}
+#'   \item{age}{Age of the respondent. Filtered to ages 18 to 61.}
+#'   \item{education}{Educational attainment. Values include Less than a high school graduate, High school graduate or GED, Some college or associates degree, Bachelor's degree, and Graduate degree or professional degree.}
+#'   \item{self_rated_health}{Opinion of health. Values include Excellent, Very good, Good, Fair, and Poor.}
+#'   \item{employment_status}{Primary activity in previous week. Values include Employed and Unemployed.}
+#'   \item{household_income}{Household income. Values include Under $10,000, $10,000 to $34,999, $35,000 to $74,999, $75,000 to $149,999, and $150,000 and over.}
+#'   \item{household_structure}{Count of household members. Values include Lives alone and Does not live alone.}
+#'   \item{population_density}{Category of population density (persons per square mile) in the census block group of the household's home location. Values include 0-99, 100-499, 500-999, 1,000-1,999, 2,000-3,999, 4,000-9,999, 10,000-24,999, and 25,000 and over.}
+#'   \item{urban_rural}{Household in urban or rural area. Values include Urban and Rural.}
+#'   \item{state}{Household state. Includes the 50 states and Washington, DC.}
+#'   \item{driver_status}{Driver status. Values include Drives and Does not drive.}
+#'   \item{cane}{Does the respondent use a cane to aid their travel?}
+#'   \item{manual_wheelchair}{Does the respondent use a manual wheelchair to aid their travel?}
+#'   \item{crutches}{Does the respondent use a crutch to aid their travel?}
+#'   \item{dog}{Does the respondent use a dog to aid their travel?}
+#'   \item{motorized_wheelchair}{Does the respondent use a motorized wheelchair to aid their travel?}
+#'   \item{scooter}{Does the respondent use a scooter to aid their travel?}
+#'   \item{white_cane}{Does the respondent use a white cane to aid their travel?}
+#'   \item{walker}{Does the respondent use a walker to aid their travel?}
+#'   \item{other_accommodation}{Does the respondent use any other accommodation rather than those listed?}
+#'   \item{yearly_miles_personally_driven}{Miles personally driven in all vehicles. Values range from 0 to 200000.}
+#'   \item{count_of_public_transit_usage}{Count of public transit usage in last month. Values range from 0 to 30.}
+#'   \item{count_of_rideshare_app_usage}{Count of rideshare app usage in last month. Values range from 0 to 99.}
+#'   \item{count_of_bike_trips}{Count of bike trips in past week. Values range from 0 to 99.}
+#'   \item{count_of_walk_trips}{Count of walk trips in past week. Values range from 0 to 200.}
+#'   \item{count_of_online_delivery}{Count of times purchased online for delivery in last 30 days. Values range from 0 to 99.}
+#' }
+#' @source <https://nhts.ornl.gov/>
+"person"

@@ -16,6 +16,7 @@ BugReports: https://github.com/scao53/tripaccess/issues
 Depends: 
     R (>= 3.5)
 LazyData: true
+LazyDataCompression: xz
 Suggests: 
     knitr,
     rmarkdown,

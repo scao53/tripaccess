@@ -23,3 +23,52 @@
     Output
       [1] 40
 
+---
+
+    Code
+      cat(format(tidytree::as_tibble(house)[1:3, 1:5])[-3L], sep = "\n")
+    Output
+      # A tibble: 3 x 5
+        household_id region number_drivers count_household_members number_vehicles
+      1     30000007 05                  3                       3               5
+      2     30000008 03                  2                       2               4
+      3     30000012 02                  1                       1               2
+
+---
+
+    Code
+      nrow(house)
+    Output
+      [1] 129695
+
+---
+
+    Code
+      ncol(house)
+    Output
+      [1] 9
+
+---
+
+    Code
+      cat(format(tidytree::as_tibble(trip)[1:3, 1:5])[-3L], sep = "\n")
+    Output
+      # A tibble: 3 x 5
+        household_id person_id trip_purpose          gas_price num_of_people_on_trip
+      1     30000007 01        other_home_based_trip      228.                     1
+      2     30000007 01        other_home_based_trip      228.                     1
+      3     30000007 02        work_trip                  228.                     1
+
+---
+
+    Code
+      nrow(trip)
+    Output
+      [1] 921590
+
+---
+
+    Code
+      ncol(trip)
+    Output
+      [1] 8

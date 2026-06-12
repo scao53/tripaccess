@@ -1,0 +1,142 @@
+---
+title: "house"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{house}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Setup
+
+```{r eval = FALSE}
+devtools::install()
+```
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tripaccess)
+library(tidyverse)
+```
+
+## Single Table Wrangling and Data Visualization Example
+
+This example uses the `house` dataset to explore household vehicle access. The
+main question is whether households with more drivers tend to have more
+vehicles.
+
+```{r, message = FALSE, warning = FALSE, out.width = "70%"}
+#> Filtered to households with at least one driver
+house_with_drivers <- house |>
+  filter(number_drivers > 0)
+
+#> Create readable labels for Census division and young child status
+house_with_drivers <- house_with_drivers |>
+  mutate(
+    region_label = case_when(
+      region == "01" ~ "New England",
+      region == "02" ~ "Middle Atlantic",
+      region == "03" ~ "East North Central",
+      region == "04" ~ "West North Central",
+      region == "05" ~ "South Atlantic",
+      region == "06" ~ "East South Central",
+      region == "07" ~ "West South Central",
+      region == "08" ~ "Mountain",
+      region == "09" ~ "Pacific"
+    ),
+    young_child_status = case_when(
+      count_young_child > 0 ~ "Young child in household",
+      TRUE ~ "No young child in household"
+    )
+  )
+
+#> Sort facet_wrap labels
+house_with_drivers$region_sort_val <- factor(house_with_drivers$region_label, levels = c("New England", "Middle Atlantic", "East North Central", "West North Central", "South Atlantic", "East South Central", "West South Central", "Mountain", "Pacific"))
+
+#> Plot household vehicles by Census division
+ggplot(data = house_with_drivers,
+       aes(x = number_vehicles)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~region_sort_val) +
+  labs(title = "Household Vehicle Counts by Census Division",
+       x = "Number of Household Vehicles",
+       y = "Count of Households") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 4),
+        axis.text = element_text(size = 5),
+        axis.title = element_text(size = 5),
+        title = element_text(size = 5))
+
+#> Summary statistics of vehicles by number of drivers
+house_with_drivers |>
+  group_by(number_drivers) |>
+  summarize(
+    households = n(),
+    mean_vehicles = mean(number_vehicles),
+    median_vehicles = median(number_vehicles),
+    sd_vehicles = sd(number_vehicles)
+  )
+
+#> Filtered to households with at least one vehicle
+house_with_vehicles <- house_with_drivers |>
+  filter(number_vehicles > 0)
+
+#> Plot household vehicles by number of drivers
+ggplot(data = house_with_vehicles,
+       aes(x = number_drivers,
+           y = number_vehicles)) +
+  geom_jitter(alpha = 0.08, width = 0.15, height = 0.15) +
+  geom_smooth(method = lm, se = FALSE, formula = y ~ x, color = "blue") +
+  labs(title = "Household Vehicles by Number of Drivers",
+       x = "Number of Drivers in Household",
+       y = "Number of Household Vehicles") +
+  theme_bw()
+
+#> Fit a simple linear regression model
+vehicles_drivers_model <- lm(number_vehicles ~ number_drivers,
+                             data = house_with_vehicles)
+summary(vehicles_drivers_model)
+
+#> Correlation between number of drivers and number of vehicles
+cor(house_with_vehicles$number_drivers, house_with_vehicles$number_vehicles)
+
+#> The slope estimates the average change in household vehicles for one
+#> additional driver in the household.
+coef(vehicles_drivers_model)["number_drivers"]
+
+#> Compare vehicle access across Census divisions
+house_with_vehicles |>
+  group_by(region_label) |>
+  summarize(
+    households = n(),
+    mean_vehicles = mean(number_vehicles),
+    median_vehicles = median(number_vehicles)
+  ) |>
+  arrange(desc(mean_vehicles))
+
+#> Plot Household Vehicle Counts by Young Child Status
+ggplot(data = house_with_vehicles,
+       aes(x = number_vehicles,
+           y = young_child_status,
+           fill = young_child_status)) +
+  geom_boxplot() +
+  facet_wrap(~region_sort_val) +
+  labs(title = "Household Vehicle Counts \nBy Young Child Status",
+       fill = "Young Child Status",
+       x = "Number of Household Vehicles",
+       y = "Young Child Status") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 2),
+        axis.text = element_text(size = 4),
+        axis.title = element_text(size = 4),
+        title = element_text(size = 4),
+        legend.text = element_text(size = 4),
+        legend.title = element_text(size = 4)) +
+  scale_fill_manual(values = c("indianred1", "palegreen3"))
+```

@@ -4,4 +4,12 @@ test_that("datasets are unchanged", {
   expect_snapshot(cat(format(tidytree::as_tibble(tripaccess)[1:3, 1:5])[-3L], sep = "\n"))
   expect_snapshot(nrow(tripaccess))
   expect_snapshot(ncol(tripaccess))
+
+  expect_snapshot(cat(format(tidytree::as_tibble(house)[1:3, 1:5])[-3L], sep = "\n"))
+  expect_snapshot(nrow(house))
+  expect_snapshot(ncol(house))
+
+  expect_snapshot(cat(format(tidytree::as_tibble(trip)[1:3, 1:5])[-3L], sep = "\n"))
+  expect_snapshot(nrow(trip))
+  expect_snapshot(ncol(trip))
 })

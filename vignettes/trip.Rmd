@@ -1,0 +1,131 @@
+---
+title: "trip"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{trip}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Setup
+
+```{r eval = FALSE}
+devtools::install()
+```
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tripaccess)
+library(tidyverse)
+```
+
+## Single Table Wrangling and Data Visualization Example
+
+This example uses the `trip` dataset to explore the relationship between trip
+distance and trip duration. This is a useful intro statistics example because it
+uses one quantitative explanatory variable and one quantitative outcome
+variable.
+
+```{r, message = FALSE, warning = FALSE, out.width = "70%"}
+#> Filtered to shorter trips for a clearer introductory visualization
+short_trips <- trip |>
+  filter(trip_miles <= 50,
+         trip_duration <= 180)
+
+#> Create readable labels for trip purpose
+short_trips <- short_trips |>
+  mutate(
+    trip_purpose_label = case_when(
+      trip_purpose == "shopping_trip" ~ "Shopping",
+      trip_purpose == "other_home_based_trip" ~ "Other home-based",
+      trip_purpose == "social_recreational_trip" ~ "Social/recreational",
+      trip_purpose == "work_trip" ~ "Work",
+      trip_purpose == "other_non_home_based_trip" ~ "Other non-home-based"
+    )
+  )
+
+#> Sort facet_wrap labels
+short_trips$trip_purpose_sort_val <- factor(short_trips$trip_purpose_label, levels = c("Shopping", "Other home-based", "Social/recreational", "Work", "Other non-home-based"))
+
+#> Plot Trip Distance by Trip Purpose
+ggplot(data = short_trips,
+       aes(x = trip_miles)) +
+  geom_histogram(bins = 25, color = "white") +
+  facet_wrap(~trip_purpose_sort_val) +
+  labs(title = "Trip Distance by Trip Purpose",
+       x = "Trip Distance in Miles",
+       y = "Count of Trips") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 3),
+        axis.text = element_text(size = 5),
+        axis.title = element_text(size = 5),
+        title = element_text(size = 5))
+
+#> Summary statistics of trip miles and duration by trip purpose
+short_trips |>
+  group_by(trip_purpose_label) |>
+  summarize(
+    trips = n(),
+    mean_miles = mean(trip_miles),
+    median_miles = median(trip_miles),
+    mean_duration = mean(trip_duration),
+    median_duration = median(trip_duration)
+  ) |>
+  arrange(desc(mean_miles))
+
+#> Filtered to trips with positive distance and duration
+positive_distance_trips <- short_trips |>
+  filter(trip_miles > 0,
+         trip_duration > 0)
+
+#> Plot trip duration by trip distance
+ggplot(data = positive_distance_trips,
+       aes(x = trip_miles,
+           y = trip_duration)) +
+  geom_point(alpha = 0.05) +
+  geom_smooth(method = lm, se = FALSE, formula = y ~ x, color = "blue") +
+  labs(title = "Trip Duration by Trip Distance",
+       x = "Trip Distance in Miles",
+       y = "Trip Duration in Minutes") +
+  theme_bw()
+
+#> Fit a simple linear regression model
+duration_miles_model <- lm(trip_duration ~ trip_miles,
+                           data = positive_distance_trips)
+summary(duration_miles_model)
+
+#> Correlation between trip distance and trip duration
+cor(positive_distance_trips$trip_miles, positive_distance_trips$trip_duration)
+
+#> The slope estimates the average change in trip duration for one additional
+#> mile of trip distance.
+coef(duration_miles_model)["trip_miles"]
+
+#> Plot Trip Duration by Trip Purpose
+ggplot(data = positive_distance_trips,
+       aes(x = trip_duration,
+           y = trip_purpose_label,
+           fill = trip_purpose_label)) +
+  geom_boxplot() +
+  labs(title = "Trip Duration by Trip Purpose",
+       fill = "Trip Purpose",
+       x = "Trip Duration in Minutes",
+       y = "Trip Purpose") +
+  theme_bw() +
+  theme(axis.text = element_text(size = 4),
+        axis.title = element_text(size = 4),
+        title = element_text(size = 4),
+        legend.text = element_text(size = 4),
+        legend.title = element_text(size = 4))
+
+#> Test whether average trip distance differs by trip purpose
+trip_purpose_model <- lm(trip_miles ~ trip_purpose_label,
+                         data = positive_distance_trips)
+anova(trip_purpose_model)
+```

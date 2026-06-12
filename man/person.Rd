@@ -13,7 +13,7 @@ A data frame with 99564 rows (each row is a person) and 32 columns
 \item{sex}{Sex of the respondent. Values include Male and Female.}
 \item{race}{Race of the respondent. Values include White, Black, Asian, American Indian, Hawaiian/Pacific Islander, Multiracial, and Other.}
 \item{hispanic_ethnicity}{Hispanic or Latino origin. Values include Hispanic and Non-Hispanic.}
-\item{nativity}{Born in United States. Values include Yes and No.}
+\item{nativity}{Born in United States. Stored as coded values from the original survey data.}
 \item{age}{Age of the respondent. Filtered to ages 18 to 61.}
 \item{education}{Educational attainment. Values include Less than a high school graduate, High school graduate or GED, Some college or associates degree, Bachelor's degree, and Graduate degree or professional degree.}
 \item{self_rated_health}{Opinion of health. Values include Excellent, Very good, Good, Fair, and Poor.}
@@ -32,7 +32,7 @@ A data frame with 99564 rows (each row is a person) and 32 columns
 \item{scooter}{Does the respondent use a scooter to aid their travel?}
 \item{white_cane}{Does the respondent use a white cane to aid their travel?}
 \item{walker}{Does the respondent use a walker to aid their travel?}
-\item{other_accommodation}{Does the respondent use any other accommodation rather than those listed?}
+\item{other_accommodation}{Derived from the original W_NONE variable. Indicates whether no listed mobility aid was reported.}
 \item{yearly_miles_personally_driven}{Miles personally driven in all vehicles. Values range from 0 to 200000.}
 \item{count_of_public_transit_usage}{Count of public transit usage in last month. Values range from 0 to 30.}
 \item{count_of_rideshare_app_usage}{Count of rideshare app usage in last month. Values range from 0 to 99.}

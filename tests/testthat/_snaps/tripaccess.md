@@ -54,21 +54,22 @@
       cat(format(tidytree::as_tibble(trip)[1:3, 1:5])[-3L], sep = "\n")
     Output
       # A tibble: 3 x 5
-        household_id person_id trip_purpose          gas_price num_of_people_on_trip
-      1     30000007 01        other_home_based_trip      228.                     1
-      2     30000007 01        other_home_based_trip      228.                     1
-      3     30000007 02        work_trip                  228.                     1
+         HOUSEID PERSONID TDTRPNUM STRTTIME ENDTIME
+      1 30000007 01       01       1000     1015   
+      2 30000007 01       02       1510     1530   
+      3 30000007 02       01       0700     0900   
 
 ---
 
     Code
       nrow(trip)
     Output
-      [1] 921590
+      [1] 923572
 
 ---
 
     Code
       ncol(trip)
     Output
-      [1] 8
+      [1] 115
+

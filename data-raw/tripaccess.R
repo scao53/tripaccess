@@ -16,9 +16,9 @@ trip_selected <- trip |>
                 VMT_MILE) |>  # Trip distance in miles for personally driven vehicle trips
   filter(NUMONTRP != -9 & TRPMILES != -9 & TRVLCMIN != -9) |>
   group_by(HOUSEID, PERSONID, TRIPPURP) |>
-  dplyr::summarize(Avg_num_of_people = round(mean(NUMONTRP), digits = 0),
-                   Avg_trip_distance = round(mean(TRPMILES), digits = 2),
-                   Avg_trip_duration = round(mean(TRVLCMIN), digits = 2)) |>
+  dplyr::summarize(Sum_num_of_people = round(sum(NUMONTRP), digits = 0),
+                   Sum_trip_distance = round(sum(TRPMILES), digits = 2),
+                   Sum_trip_duration = round(sum(TRVLCMIN), digits = 2)) |>
   mutate(TRIPPURP = case_when(TRIPPURP == "HBSHOP" ~ "shopping_trip",
                               TRIPPURP == "HBO" ~ "other_home_based_trip",
                               TRIPPURP == "HBSOCREC" ~ "social_recreational_trip",
@@ -148,11 +148,13 @@ per_selected <- per |>
                           EDUC == "02" ~ "High school graduate or GED",
                           EDUC == "03" ~ "Some college or associates degree",
                           EDUC == "04" ~ "Bachelor's degree",
-                          EDUC == "05" ~ "Graduate degree or professional degree"))
+                          EDUC == "05" ~ "Graduate degree or professional degree")) |>
+  mutate(BORNINUS = case_when(BORNINUS == "01" ~ "Yes",
+                              BORNINUS == "02" ~ "No"))
 
 per_selected_join <- per_selected |>
   inner_join(trip_selected, by = c("HOUSEID" = "HOUSEID", "PERSONID" = "PERSONID")) |>
-  filter(if_any(c(Avg_num_of_people:Avg_trip_duration), ~ !is.na(.)))
+  filter(if_any(c(Sum_num_of_people:Sum_trip_duration), ~ !is.na(.)))
 
 per_selected_join_rename <- per_selected_join |>
   rename(household_id = HOUSEID,
@@ -185,9 +187,9 @@ per_selected_join_rename <- per_selected_join |>
          walker = W_WLKR, # Medical device used: Walker
          other_accommodation = W_NONE, # Medical device used: None
          count_of_online_delivery = DELIVER, # Count of times purchased online for delivery in last 30 days
-         avg_num_of_people_on_trip = Avg_num_of_people,
-         avg_trip_distance_in_miles = Avg_trip_distance,
-         avg_trip_duration_in_minutes = Avg_trip_duration,
+         sum_num_of_people_on_trip = Sum_num_of_people,
+         sum_trip_distance_in_miles = Sum_trip_distance,
+         sum_trip_duration_in_minutes = Sum_trip_duration,
          trip_purpose = TRIPPURP,
          urban_rural = URBRUR,
          state = HHSTATE
@@ -207,15 +209,16 @@ per_selected_join_final <- per_selected_join_wider |>
                    count_of_bike_trips = sum(count_of_bike_trips),
                    count_of_walk_trips = sum(count_of_walk_trips),
                    count_of_online_delivery = sum(count_of_online_delivery),
-                   avg_num_of_people_on_trip = sum(avg_num_of_people_on_trip),
-                   avg_trip_distance_in_miles = sum(avg_trip_distance_in_miles),
-                   avg_trip_duration_in_minutes = sum(avg_trip_duration_in_minutes),
+                   avg_num_of_people_on_trip = sum(sum_num_of_people_on_trip)/sum(other_home_based_trip+work_trip+social_recreational_trip+other_non_home_based_trip+shopping_trip),
+                   avg_trip_distance_in_miles = sum(sum_trip_distance_in_miles)/sum(other_home_based_trip+work_trip+social_recreational_trip+other_non_home_based_trip+shopping_trip),
+                   avg_trip_duration_in_minutes = sum(sum_trip_duration_in_minutes)/sum(other_home_based_trip+work_trip+social_recreational_trip+other_non_home_based_trip+shopping_trip),
                    other_home_based_trip = sum(other_home_based_trip),
                    work_trip = sum(work_trip),
                    social_recreational_trip = sum(social_recreational_trip),
                    other_non_home_based_trip = sum(other_non_home_based_trip),
                    shopping_trip = sum(shopping_trip)
-  )
+  ) |>
+  ungroup()
 per_selected_join_final <- per_selected_join_final |>
   mutate(across(c(other_home_based_trip:shopping_trip), ~ifelse(.x==1, TRUE, FALSE)))
 

@@ -46,4 +46,18 @@
 #'   \item{other_non_home_based_trip}{Whether having other non home-based trips on the respondent's travel day.}
 #' }
 #' @source <https://nhts.ornl.gov/>
+#' @examples
+#' if (require("tidyverse")) {
+#' # Filtered to people who have a travel disability
+#' tripaccess_disabled <- tripaccess |>
+#'   filter(travel_disability != "No_disability")
+#'
+#' # Summary statistics of public transit usage by disabled people who use a walker
+#' tripaccess_disabled |>
+#'   filter(walker == "True") |>
+#'   group_by(travel_disability) |>
+#'   summarize(public_transit_usage_median = median(count_of_public_transit_usage),
+#'   public_transit_usage_mean = mean(count_of_public_transit_usage),
+#'   public_transit_usage_sd = sd(count_of_public_transit_usage))
+#' }
 "tripaccess"

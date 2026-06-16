@@ -25,12 +25,11 @@ library(tripaccess)
 library(tidyverse)
 ```
 
-## Single Table Wrangling and Data Visualization Example
+## Exploratory Data Analysis Example
 
 This example uses the `person` dataset to explore public transit use by travel
-disability status. The main question is whether adults with a travel disability
-report using public transit in the last month at different rates than adults
-without a travel disability.
+disability status. The main question is whether individuals who have a travel disability
+report using public transit in the last month at different rates than individuals who do not have a travel disability.
 
 ```{r, message = FALSE, warning = FALSE, out.width = "70%"}
 #> Create readable labels for travel disability status and public transit use
@@ -64,7 +63,7 @@ transit_summary <- person_transit |>
 
 transit_summary
 
-#> Plot Percent of People Who Used Public Transit in Last Month
+#> Plot Public Transit Use by Travel Disability Status
 person_transit |>
   count(travel_disability_sort_val, public_transit_sort_val) |>
   group_by(travel_disability_sort_val) |>
@@ -86,54 +85,9 @@ person_transit |>
         legend.text = element_text(size = 4),
         legend.title = element_text(size = 4))
 
-#> Filtered to people who used public transit at least once in the last month
-person_public_transit <- person_transit |>
-  filter(count_of_public_transit_usage > 0)
-
-#> Plot Public Transit Usage Among People Who Used Public Transit
-ggplot(data = person_public_transit,
-       aes(x = count_of_public_transit_usage)) +
-  geom_histogram(bins = 25, color = "white") +
-  facet_wrap(~travel_disability_sort_val) +
-  labs(title = "Public Transit Usage in Last Month",
-       x = "Count of Public Transit Usage",
-       y = "Count of People") +
-  theme_bw() +
-  theme(strip.text = element_text(size = 4),
-        axis.text = element_text(size = 5),
-        axis.title = element_text(size = 5),
-        title = element_text(size = 5))
-
 #> Test whether public transit use differs by travel disability status
 prop.test(
   x = transit_summary$public_transit_users,
   n = transit_summary$people
 )
-
-#> Summary statistics of walk trips by travel disability status
-person_transit |>
-  group_by(travel_disability_sort_val) |>
-  summarize(
-    walk_trips_median = median(count_of_walk_trips),
-    walk_trips_mean = mean(count_of_walk_trips),
-    walk_trips_sd = sd(count_of_walk_trips)
-  )
-
-#> Plot Walk Trips by Travel Disability Status
-ggplot(data = person_transit,
-       aes(x = count_of_walk_trips,
-           y = travel_disability_sort_val,
-           fill = travel_disability_sort_val)) +
-  geom_boxplot() +
-  labs(title = "Walk Trips by Travel Disability Status",
-       fill = "Travel Disability Status",
-       x = "Count of Walk Trips in Past Week",
-       y = "Travel Disability Status") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 4),
-        axis.title = element_text(size = 4),
-        title = element_text(size = 4),
-        legend.text = element_text(size = 4),
-        legend.title = element_text(size = 4)) +
-  scale_fill_manual(values = c("indianred1", "palegreen3"))
 ```

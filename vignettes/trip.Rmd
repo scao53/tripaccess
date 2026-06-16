@@ -25,12 +25,10 @@ library(tripaccess)
 library(tidyverse)
 ```
 
-## Single Table Wrangling and Data Visualization Example
+## Exploratory Data Analysis and Intro Statistics Example
 
-This example uses the `trip` dataset to explore the relationship between trip
-distance and trip duration. This is a useful intro statistics example because it
-uses one quantitative explanatory variable and one quantitative outcome
-variable.
+This example uses the `trip` dataset to explore the relationships between trip
+distance, trip duration, and trip purpose. Among those, you will see an intro statistics example using one quantitative explanatory variable (trip distance) and one quantitative outcome variable (trip duration).
 
 ```{r, message = FALSE, warning = FALSE, out.width = "70%"}
 #> Filtered to shorter trips for a clearer introductory visualization

@@ -15,4 +15,25 @@
 #'   \item{count_young_child}{Count of persons with an age between 0 and 4 in household.}
 #' }
 #' @source <https://nhts.ornl.gov/>
+#' @examples
+#' if (require("tidyverse")) {
+#' # Filtered to households with at least one driver
+#' house_with_drivers <- house |>
+#'   filter(number_drivers > 0)
+#'
+#' # Filtered to households with at least one vehicle
+#' house_with_vehicles <- house_with_drivers |>
+#'   filter(number_vehicles > 0)
+#'
+#' # Plot household vehicles by number of drivers
+#' ggplot(data = house_with_vehicles,
+#'        aes(x = number_drivers,
+#'            y = number_vehicles)) +
+#'   geom_jitter(alpha = 0.08, width = 0.15, height = 0.15) +
+#'   geom_smooth(method = lm, se = FALSE, formula = y ~ x, color = "blue") +
+#'   labs(title = "Household Vehicles versus Number of Drivers",
+#'        x = "Number of Drivers in Household",
+#'        y = "Number of Household Vehicles") +
+#'   theme_bw()
+#' }
 "house"

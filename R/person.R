@@ -38,4 +38,23 @@
 #'   \item{count_of_online_delivery}{Count of times purchased online for delivery in last 30 days. Values range from 0 to 99.}
 #' }
 #' @source <https://nhts.ornl.gov/>
+#' @examples
+#' if (require("tidyverse")) {
+#' # Summary statistics of public transit use by travel disability status
+#' transit_summary <- person |>
+#'   group_by(travel_disability) |>
+#'   summarize(
+#'     people = n(),
+#'     public_transit_users = sum(count_of_public_transit_usage > 0),
+#'     public_transit_use_prop = mean(count_of_public_transit_usage > 0),
+#'     public_transit_usage_median = median(count_of_public_transit_usage),
+#'     public_transit_usage_mean = mean(count_of_public_transit_usage),
+#'     public_transit_usage_sd = sd(count_of_public_transit_usage)
+#'   )
+#' # Test whether public transit use differs by travel disability status
+#' prop.test(
+#'   x = transit_summary$public_transit_users,
+#'   n = transit_summary$people
+#' )
+#' }
 "person"

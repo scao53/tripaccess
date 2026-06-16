@@ -26,4 +26,25 @@ trip
 \description{
 Include trip related categorical and numeric variables.
 }
+\examples{
+if (require("tidyverse")) {
+# Filtered to shorter trips for a clearer introductory visualization
+short_trips <- trip |>
+  filter(trip_miles <= 50,
+         trip_duration <= 180)
+
+# Filtered to trips with positive distance and duration
+positive_distance_trips <- short_trips |>
+  filter(trip_miles > 0,
+         trip_duration > 0)
+
+# Fit a simple linear regression model
+duration_miles_model <- lm(trip_duration ~ trip_miles,
+                           data = positive_distance_trips)
+summary(duration_miles_model)
+
+# Correlation between trip distance and trip duration
+cor(positive_distance_trips$trip_miles, positive_distance_trips$trip_duration)
+}
+}
 \keyword{datasets}

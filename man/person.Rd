@@ -13,7 +13,7 @@ A data frame with 99564 rows (each row is a person) and 32 columns
 \item{sex}{Sex of the respondent. Values include Male and Female.}
 \item{race}{Race of the respondent. Values include White, Black, Asian, American Indian, Hawaiian/Pacific Islander, Multiracial, and Other.}
 \item{hispanic_ethnicity}{Hispanic or Latino origin. Values include Hispanic and Non-Hispanic.}
-\item{nativity}{Born in United States. Stored as coded values from the original survey data.}
+\item{nativity}{Born in United States. Values include Yes and No.}
 \item{age}{Age of the respondent. Filtered to ages 18 to 61.}
 \item{education}{Educational attainment. Values include Less than a high school graduate, High school graduate or GED, Some college or associates degree, Bachelor's degree, and Graduate degree or professional degree.}
 \item{self_rated_health}{Opinion of health. Values include Excellent, Very good, Good, Fair, and Poor.}

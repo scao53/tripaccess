@@ -54,10 +54,11 @@
       cat(format(tidytree::as_tibble(house)[1:3, 1:5])[-3L], sep = "\n")
     Output
       # A tibble: 3 x 5
-        household_id region number_drivers count_household_members number_vehicles
-      1     30000007 05                  3                       3               5
-      2     30000008 03                  2                       2               4
-      3     30000012 02                  1                       1               2
+        household_id region      number_drivers count_household_memb~1 number_vehicles
+      1     30000007 South Atla~              3                      3               5
+      2     30000008 East North~              2                      2               4
+      3     30000012 Middle Atl~              1                      1               2
+      # i abbreviated name: 1: count_household_members
 
 ---
 

@@ -34,6 +34,36 @@ This example uses the `house` dataset to explore whether households with more dr
 house_with_drivers <- house |>
   filter(number_drivers > 0)
 
+<<<<<<< HEAD
+=======
+#> Create Census division labels and young child status
+house_with_drivers <- house_with_drivers |>
+  mutate(
+    region_label = region,
+    young_child_status = case_when(
+      count_young_child > 0 ~ "Young child in household",
+      TRUE ~ "No young child in household"
+    )
+  )
+
+#> Sort facet_wrap labels
+house_with_drivers$region_sort_val <- factor(house_with_drivers$region_label, levels = c("New England", "Middle Atlantic", "East North Central", "West North Central", "South Atlantic", "East South Central", "West South Central", "Mountain", "Pacific"))
+
+#> Plot household vehicles by Census division
+ggplot(data = house_with_drivers,
+       aes(x = number_vehicles)) +
+  geom_histogram(bins = 10, color = "white") +
+  facet_wrap(~region_sort_val) +
+  labs(title = "Household Vehicle Counts by Census Division",
+       x = "Number of Household Vehicles",
+       y = "Count of Households") +
+  theme_bw() +
+  theme(strip.text = element_text(size = 4),
+        axis.text = element_text(size = 5),
+        axis.title = element_text(size = 5),
+        title = element_text(size = 5))
+
+>>>>>>> 0e3c8d9 (revised house dataset and updated the data)
 #> Summary statistics of vehicles by number of drivers
 house_with_drivers |>
   group_by(number_drivers) |>

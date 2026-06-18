@@ -20,7 +20,17 @@ The `tripaccess` and `person` datasets include a variable
 travel_disability, indicating whether respondents have a medical
 condition “that makes it difficult to travel outside of home”. These two
 datasets also include travel accommodations information, e.g., walker,
-cane.
+cane. Note that the NHTS 2017 has imbalanced classes of people who have
+a travel disability and people who do not have a travel disability. So
+this data package can be used for data ethics discussion, e.g., ethical
+concerns of underrepresentation of marginalized groups in your data.
+
+Overall, this data package is suitable for data visualization, data
+wrangling, joining datasets, exploratory data analysis (EDA), group
+comparisons, simple linear regression, categorical data analysis, and
+data ethics discussion in data science and statistics classes.
+
+## Disability Inclusion Background
 
 The transport system is a pillar for ensuring social equity (Pagliara &
 Di Ciommo, 2020). People often need to travel to work, study, connect
@@ -31,11 +41,6 @@ which causes barriers to access for them (Levine & Karner, 2023). This
 data package can be used to study economic and social participation from
 a critical disability lens and provide policy implications for building
 a more equitable and inclusive transport system.
-
-This data package is suitable for data visualization, data wrangling,
-joining datasets, exploratory data analysis (EDA), group comparisons,
-simple linear regression, and categorical data analysis in data science
-and statistics classes.
 
 ## Installation
 

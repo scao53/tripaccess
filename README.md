@@ -16,13 +16,13 @@ joining datasets, exploratory data analysis (EDA), group comparisons,
 simple linear regression, categorical data analysis, and data ethics
 discussion in data science and statistics classes.
 
-## Disability Inclusion Components
+## Disability Inclusion Orientation
 
 One goal of this data package is to increase awareness of disability
 inclusion by examining factors or characteristics that are associated
 with different travel behaviors of people who have a travel disability.
 The `tripaccess` and `person` datasets include a variable
-travel_disability, indicating whether respondents have a medical
+`travel_disability`, indicating whether respondents have a medical
 condition “that makes it difficult to travel outside of home”. These two
 datasets also include travel accommodations information, e.g., walker,
 cane.
@@ -63,25 +63,27 @@ library(tripaccess)
   trip files, includes disability and other demographic as well as
   mobility and trip categorical and numeric variables. It has 86,521
   rows (each row is a person, filtered to age 18-61) and 40 columns. It
-  can be used for data visualization, single table data wrangling, EDA,
-  group comparisons, and categorical data analysis.
+  can be used for advanced exercises, e.g., data visualization, single
+  table data wrangling, EDA, group comparisons, and categorical data
+  analysis.
 - `person`: person, constructed from the NHTS 2017 person file, includes
   disability, mobility, and other demographic categorical and numeric
   variables. It has 99,564 rows (each row is a person, filtered to age
-  18-61) and 32 columns. It can be used for data visualization, single
-  table analysis, EDA, group comparisons, and categorical data analysis.
-  It can also be used together with the `house` and `trip` datasets for
-  joining datasets (see Data Relationships).
+  18-61) and 32 columns. It can be used for advanced exercises, e.g.,
+  data visualization, single table analysis, EDA, group comparisons, and
+  categorical data analysis. It can also be used together with the
+  `house` and `trip` datasets for joining datasets (see Data
+  Relationships).
 - `house`: house, constructed from the NHTS 2017 house file, includes
   household characteristics categorical and numeric variables. It has
   129,695 rows (each row is a household) and 9 columns. It can be used
-  for beginners’ exercises, such as data visualization, data wrangling,
+  for beginners’ exercises, e.g., data visualization, data wrangling,
   and EDA. It can also be used together with the `person` and `trip`
   datasets for joining datasets (see Data Relationships).
 - `trip`: trip, constructed from the NHTS 2017 trip file, includes trip
   related categorical and numeric variables. It has 921,590 rows (each
   row is a trip) and 8 columns. It can be used for beginners’ exercises,
-  such as data visualization, data wrangling, EDA, and simple linear
+  e.g., data visualization, data wrangling, EDA, and simple linear
   regression. It can also be used together with the `person` and `house`
   datasets for joining datasets (see Data Relationships).
 

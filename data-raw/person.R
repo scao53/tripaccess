@@ -130,7 +130,9 @@ per_selected <- per |>
                           EDUC == "02" ~ "High school graduate or GED",
                           EDUC == "03" ~ "Some college or associates degree",
                           EDUC == "04" ~ "Bachelor's degree",
-                          EDUC == "05" ~ "Graduate degree or professional degree"))
+                          EDUC == "05" ~ "Graduate degree or professional degree")) |>
+  mutate(BORNINUS = case_when(BORNINUS == "01" ~ "Yes",
+                              BORNINUS == "02" ~ "No"))
 
 per_selected_rename <- per_selected |>
   rename(household_id = HOUSEID,

@@ -11,7 +11,12 @@ This data package contains four subsets `tripaccess`, `person`, `house`,
 and `trip`, constructed from the [National Household Travel Survey
 (NHTS)](https://nhts.ornl.gov/) 2017 person, house, and trip files. It
 includes personal trips, mobility, demographic, and household
-information.
+information. It is suitable for data visualization, data wrangling,
+joining datasets, exploratory data analysis (EDA), group comparisons,
+simple linear regression, categorical data analysis, and data ethics
+discussion in data science and statistics classes.
+
+## Disability Inclusion Components
 
 One goal of this data package is to increase awareness of disability
 inclusion by examining factors or characteristics that are associated
@@ -20,17 +25,12 @@ The `tripaccess` and `person` datasets include a variable
 travel_disability, indicating whether respondents have a medical
 condition “that makes it difficult to travel outside of home”. These two
 datasets also include travel accommodations information, e.g., walker,
-cane. Note that the NHTS 2017 has imbalanced classes of people who have
-a travel disability and people who do not have a travel disability. So
+cane.
+
+Note that the NHTS 2017 has imbalanced classes of people who have a
+travel disability and people who do not have a travel disability. So
 this data package can be used for data ethics discussion, e.g., ethical
 concerns of underrepresentation of marginalized groups in your data.
-
-Overall, this data package is suitable for data visualization, data
-wrangling, joining datasets, exploratory data analysis (EDA), group
-comparisons, simple linear regression, categorical data analysis, and
-data ethics discussion in data science and statistics classes.
-
-## Disability Inclusion Background
 
 The transport system is a pillar for ensuring social equity (Pagliara &
 Di Ciommo, 2020). People often need to travel to work, study, connect
@@ -62,16 +62,16 @@ library(tripaccess)
 - `tripaccess`: tripaccess, constructed from the NHTS 2017 person and
   trip files, includes disability and other demographic as well as
   mobility and trip categorical and numeric variables. It has 86,521
-  rows (each row is a person) and 40 columns. It can be used for data
-  visualization, single table data wrangling, EDA, group comparisons,
-  and categorical data analysis.
+  rows (each row is a person, filtered to age 18-61) and 40 columns. It
+  can be used for data visualization, single table data wrangling, EDA,
+  group comparisons, and categorical data analysis.
 - `person`: person, constructed from the NHTS 2017 person file, includes
   disability, mobility, and other demographic categorical and numeric
-  variables. It has 99,564 rows (each row is a person) and 32 columns.
-  It can be used for data visualization, single table analysis, EDA,
-  group comparisons, and categorical data analysis. It can also be used
-  together with the `house` and `trip` datasets for joining datasets
-  (see Data Relationships).
+  variables. It has 99,564 rows (each row is a person, filtered to age
+  18-61) and 32 columns. It can be used for data visualization, single
+  table analysis, EDA, group comparisons, and categorical data analysis.
+  It can also be used together with the `house` and `trip` datasets for
+  joining datasets (see Data Relationships).
 - `house`: house, constructed from the NHTS 2017 house file, includes
   household characteristics categorical and numeric variables. It has
   129,695 rows (each row is a household) and 9 columns. It can be used
@@ -94,7 +94,8 @@ keys. The arrows show how the datasets are connected.
 
 <img src="man/figures/datarelationships.png" align="center"/>
 
-- Use person_id and household_id to join the `person` dataset and the
-  `trip` dataset.
-- Use household_id to join the `house` dataset and the `person` dataset.
-- Use household_id to join the `house` dataset and the `trip` dataset.
+- Use `person_id` and `household_id` to join the `person` dataset and
+  the `trip` dataset.
+- Use `household_id` to join the `house` dataset and the `person`
+  dataset.
+- Use `household_id` to join the `house` dataset and the `trip` dataset.

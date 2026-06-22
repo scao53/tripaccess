@@ -6,7 +6,7 @@ Authors@R: c(
     person("Amber", "Zhang", email = "lzhang35@smith.edu", role = c("ctb")),
     person("Anna", "Zhao", email = "azhao93@smith.edu", role = c("ctb")),
     person("Smith College", role = c("cph")))
-Description: Subsets of data from the national household travel survey. The tripaccess data includes disability and other demographic, mobility, and trip categorical and numeric variables for data visualization and single table analysis.
+Description: Subsets of data from the National Household Travel Survey 2017. It includes personal trips, mobility, demographic, and household information. It is suitable for data visualization, data wrangling, joining datasets, exploratory data analysis, group comparisons, simple linear regression, categorical data analysis, and data ethics discussion in data science and statistics classes.
 License: CC0 | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

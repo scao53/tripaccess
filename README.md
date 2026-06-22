@@ -44,6 +44,12 @@ a more equitable and inclusive transport system.
 
 ## Installation
 
+Install `tripaccess` from CRAN:
+
+``` r
+install.packages("tripaccess")
+```
+
 Install the development version of tripaccess from GitHub:
 
 ``` r
@@ -101,3 +107,12 @@ keys. The arrows show how the datasets are connected.
 - Use `household_id` to join the `house` dataset and the `person`
   dataset.
 - Use `household_id` to join the `house` dataset and the `trip` dataset.
+
+## References
+
+Levine, K., & Karner, A. (2023). Approaching accessibility: Four
+opportunities to address the needs of disabled people in transportation
+planning in the United States. *Transport Policy*, 131, 66-74.
+
+Pagliara, F., & Di Ciommo, F. (2020). Editorial. *Transportation
+Research Part A*, 141, 396-397.

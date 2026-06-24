@@ -108,6 +108,37 @@ keys. The arrows show how the datasets are connected.
   dataset.
 - Use `household_id` to join the `house` dataset and the `trip` dataset.
 
+## Examples
+
+Here is an example of data wrangling and visualization using the `house`
+dataset.
+
+``` r
+library(tripaccess)
+library(tidyverse)
+
+#> Filtered to households with at least one driver
+house_with_drivers <- house |>
+   filter(number_drivers > 0)
+
+#> Filtered to households with at least one vehicle
+house_with_vehicles <- house_with_drivers |>
+   filter(number_vehicles > 0)
+
+#> Plot household vehicles by number of drivers
+ggplot(data = house_with_vehicles,
+       aes(x = number_drivers,
+           y = number_vehicles)) +
+   geom_jitter(alpha = 0.08, width = 0.15, height = 0.15) +
+   geom_smooth(method = lm, se = FALSE, formula = y ~ x, color = "blue") +
+   labs(title = "Household Vehicles versus Number of Drivers",
+        x = "Number of Drivers in Household",
+        y = "Number of Household Vehicles") +
+   theme_bw()
+```
+
+<img src="man/figures/houseplot.png" align="center"/>
+
 ## References
 
 Levine, K., & Karner, A. (2023). Approaching accessibility: Four

@@ -68,6 +68,43 @@ The `person`, `house`, and `trip` datasets can be used together for joining data
 
 ## Examples
 
+Here is an example of EDA and group comparisons using the `person` dataset.
+
+``` r
+library(tripaccess)
+library(tidyverse)
+
+#> Summary statistics of public transit use by travel disability status
+transit_summary <- person |>
+   group_by(travel_disability) |>
+   summarize(
+     people = n(),
+     public_transit_users = sum(count_of_public_transit_usage > 0),
+     public_transit_use_prop = mean(count_of_public_transit_usage > 0),
+   )
+transit_summary
+#> # A tibble: 2 × 7
+#>   travel_disability_sort_val people public_transit_users public_transit_use_prop
+#>   <fct>                       <int>                <int>                   <dbl>
+#> 1 No Travel Disability        92897                12190                   0.131
+#> 2 Travel Disability            6667                 1213                   0.182
+
+#> Test whether public transit use differs by travel disability status
+prop.test(
+   x = transit_summary$public_transit_users,
+   n = transit_summary$people
+#>  2-sample test for equality of proportions with continuity correction
+#> 
+#> data:  transit_summary$public_transit_users out of transit_summary$people
+#> X-squared = 136.93, df = 1, p-value < 2.2e-16
+#> alternative hypothesis: two.sided
+#> 95 percent confidence interval:
+#>  -0.06031243 -0.04112818
+#> sample estimates:
+#>    prop 1    prop 2 
+#> 0.1312206 0.1819409
+```
+
 Here is an example of data wrangling and visualization using the `house` dataset.
 
 ``` r
@@ -95,6 +132,8 @@ ggplot(data = house_with_vehicles,
 ```
 
 <img src="man/figures/houseplot.png" align="center"/>
+
+For more example usage of the `tripaccess`, `person`, `house`, and `trip` datasets, please view the [vignette](https://github.com/scao53/tripaccess/tree/master/vignettes).
 
 ## References
 

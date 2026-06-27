@@ -53,9 +53,9 @@ install.packages("tripaccess")
 Install the development version of tripaccess from GitHub:
 
 ``` r
-# If you haven't installed the remotes package yet, do so:
-# install.packages("remotes")
-remotes::install_github("scao53/tripaccess")
+# If you haven't installed the pak package yet, do so:
+# install.packages("pak")
+pak::pak("scao53/tripaccess")
 ```
 
 ``` r

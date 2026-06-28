@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/scao53/tripaccess/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/scao53/tripaccess/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This data package contains four subsets `tripaccess`, `person`, `house`,

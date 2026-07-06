@@ -1,6 +1,6 @@
 Package: tripaccess
 Title: American Travel Behavior and Access Datasets
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person("Shiya", "Cao", email = "scao53@smith.edu", role = c("aut", "cre")),
     person("Amber", "Zhang", email = "lzhang35@smith.edu", role = c("ctb")),

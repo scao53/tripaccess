@@ -11,7 +11,7 @@ License: CC0 | file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-URL: https://github.com/scao53/tripaccess
+URL: https://github.com/scao53/tripaccess, https://scao53.github.io/tripaccess/
 BugReports: https://github.com/scao53/tripaccess/issues
 Depends: 
     R (>= 4.1.0)

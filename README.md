@@ -188,6 +188,12 @@ For more example usage of the `tripaccess`, `person`, `house`, and
 `trip` datasets, please view the
 [vignette](https://github.com/scao53/tripaccess/tree/master/vignettes).
 
+## Disclaimer
+
+The `tripaccess`, `person`, `house`, and `trip` datasets are subsets of
+the NHTS data and unweighted. The results of your analyses cannot be
+generalized beyond the samples collected in these datasets.
+
 ## References
 
 Federal Highway Administration. (2017). 2017 National Household Travel

@@ -1,14 +1,14 @@
 # tripaccess
 
-This data package contains four subsets `tripaccess`, `person`, `house`,
-and `trip`, constructed from the [National Household Travel Survey
-(NHTS)](https://nhts.ornl.gov/) 2017 person, house, and trip files
-(Federal Highway Administration, 2017). It includes personal trips,
-mobility, demographic, and household information. It is suitable for
-data visualization, data wrangling, joining datasets, exploratory data
-analysis (EDA), group comparisons, simple linear regression, categorical
-data analysis, and data ethics discussion in data science and statistics
-classes.
+This data package contains four datasets `tripaccess`, `person`,
+`house`, and `trip`, constructed from the [National Household Travel
+Survey (NHTS)](https://nhts.ornl.gov/) 2017 person, house, and trip
+files (Federal Highway Administration, 2017). It includes personal
+trips, mobility, demographic, and household information. It is suitable
+for data visualization, data wrangling, joining datasets, exploratory
+data analysis (EDA), group comparisons, simple linear regression,
+categorical data analysis, and data ethics discussion in data science
+and statistics classes.
 
 ## Disability Inclusion Orientation
 

@@ -10,12 +10,13 @@
 
 This data package contains four subsets `tripaccess`, `person`, `house`,
 and `trip`, constructed from the [National Household Travel Survey
-(NHTS)](https://nhts.ornl.gov/) 2017 person, house, and trip files. It
-includes personal trips, mobility, demographic, and household
-information. It is suitable for data visualization, data wrangling,
-joining datasets, exploratory data analysis (EDA), group comparisons,
-simple linear regression, categorical data analysis, and data ethics
-discussion in data science and statistics classes.
+(NHTS)](https://nhts.ornl.gov/) 2017 person, house, and trip files
+(Federal Highway Administration, 2017). It includes personal trips,
+mobility, demographic, and household information. It is suitable for
+data visualization, data wrangling, joining datasets, exploratory data
+analysis (EDA), group comparisons, simple linear regression, categorical
+data analysis, and data ethics discussion in data science and statistics
+classes.
 
 ## Disability Inclusion Orientation
 
@@ -183,6 +184,10 @@ For more example usage of the `tripaccess`, `person`, `house`, and
 [vignette](https://github.com/scao53/tripaccess/tree/master/vignettes).
 
 ## References
+
+Federal Highway Administration. (2017). 2017 National Household Travel
+Survey, U.S. Department of Transportation, Washington, DC. Available
+online: <http://nhts.ornl.gov>.
 
 Levine, K., & Karner, A. (2023). Approaching accessibility: Four
 opportunities to address the needs of disabled people in transportation

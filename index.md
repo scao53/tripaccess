@@ -93,11 +93,12 @@ library(tripaccess)
 ## Data Relationships
 
 The `person`, `house`, and `trip` datasets can be used together for
-joining data. The top of each table shows the dataset name. The
-grey-shaded variables are primary keys while the others are foreign
-keys. The arrows show how the datasets are connected.
+joining data. The diagram below shows how these three datasets can be
+joined by different key variables. The top of each table shows the
+dataset name. The grey-shaded variables are primary keys while the
+others are foreign keys. The arrows show how the datasets are connected.
 
-![](reference/figures/datarelationships.png)
+\![man/figures/datarelationships.png\]
 
 - Use `person_id` and `household_id` to join the `person` dataset and
   the `trip` dataset.

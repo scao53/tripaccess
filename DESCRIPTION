@@ -19,7 +19,7 @@ LazyData: true
 LazyDataCompression: xz
 Suggests: 
     knitr,
-    rmarkdown,
+    rmarkdown (>= 2.31),
     testthat (>= 3.0.0),
     tidyverse,
     tidytree,

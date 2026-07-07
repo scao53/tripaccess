@@ -98,7 +98,11 @@ joined by different key variables. The top of each table shows the
 dataset name. The grey-shaded variables are primary keys while the
 others are foreign keys. The arrows show how the datasets are connected.
 
-\![man/figures/datarelationships.png\]
+![The diagram shows how the \`person\`, \`house\`, and \`trip\` datasets
+can be joined by different key variables. The top of each table shows
+the dataset name. The grey-shaded variables are primary keys while the
+others are foreign keys. The arrows show how the datasets are
+connected.](reference/figures/datarelationships.png)
 
 - Use `person_id` and `household_id` to join the `person` dataset and
   the `trip` dataset.
@@ -174,7 +178,16 @@ ggplot(data = house_with_vehicles,
    theme_bw()
 ```
 
-![](reference/figures/houseplot.png)
+![This scatter graph is titled Household Vehicles by Number of Drivers.
+The x / horizontal axis is titled ‘Number of Drivers in Household’ and
+its origin is 0.0 and the labels on the x axis are given 2.5, 5.0, and
+7.5. The y / vertical axis is titled ‘Number of Household Vehicles’ and
+its origin is 0.0 and the labels on the y axis are given 2.5, 5.0, 7.5,
+10.0, and 12.5. The points show a strong positive relationship between
+the number of drivers in household and the number of household vehicles
+and most households have lower numbers of drivers and vehicles. There is
+a trend line upward to the right in the
+graph.](reference/figures/houseplot.png)
 
 For more example usage of the `tripaccess`, `person`, `house`, and
 `trip` datasets, please view the

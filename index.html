@@ -101,7 +101,7 @@
 <h2 id="data-relationships">Data Relationships<a class="anchor" aria-label="anchor" href="#data-relationships"></a>
 </h2>
 <p>The <code>person</code>, <code>house</code>, and <code>trip</code> datasets can be used together for joining data. The diagram below shows how these three datasets can be joined by different key variables. The top of each table shows the dataset name. The grey-shaded variables are primary keys while the others are foreign keys. The arrows show how the datasets are connected.</p>
-<p>![man/figures/datarelationships.png]</p>
+<p><img src="reference/figures/datarelationships.png" alt="The diagram shows how the `person`, `house`, and `trip` datasets can be joined by different key variables. The top of each table shows the dataset name. The grey-shaded variables are primary keys while the others are foreign keys. The arrows show how the datasets are connected." align="center"></p>
 <ul>
 <li>Use <code>person_id</code> and <code>household_id</code> to join the <code>person</code> dataset and the <code>trip</code> dataset.</li>
 <li>Use <code>household_id</code> to join the <code>house</code> dataset and the <code>person</code> dataset.</li>
@@ -167,7 +167,11 @@
 <span>        x <span class="op">=</span> <span class="st">"Number of Drivers in Household"</span>,</span>
 <span>        y <span class="op">=</span> <span class="st">"Number of Household Vehicles"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/houseplot.png" align="center"></p>
+<p><img src="reference/figures/houseplot.png" alt="This scatter graph is titled
+Household Vehicles by Number of Drivers.
+The x / horizontal axis is titled ‘Number of Drivers in Household’ and its origin is 0.0 and the labels on the x axis are given 2.5, 5.0, and 7.5. The y / vertical axis
+is titled ‘Number of Household Vehicles’ and its origin is 0.0 and the labels on the y axis are given 2.5, 5.0, 7.5, 10.0, and 12.5.
+The points show a strong positive relationship between the number of drivers in household and the number of household vehicles and most households have lower numbers of drivers and vehicles. There is a trend line upward to the right in the graph." align="center"></p>
 <p>For more example usage of the <code>tripaccess</code>, <code>person</code>, <code>house</code>, and <code>trip</code> datasets, please view the <a href="https://github.com/scao53/tripaccess/tree/master/vignettes" class="external-link">vignette</a>.</p>
 </div>
 <div class="section level2">

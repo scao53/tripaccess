@@ -61,7 +61,7 @@ library(tripaccess)
 
 The `person`, `house`, and `trip` datasets can be used together for joining data. The diagram below shows how these three datasets can be joined by different key variables. The top of each table shows the dataset name. The grey-shaded variables are primary keys while the others are foreign keys. The arrows show how the datasets are connected. 
 
-<img src="man/figures/datarelationships.png" alt="The diagram shows how the `person`, `house`, and `trip` datasets can be joined by different key variables. The top of each table shows the dataset name. The grey-shaded variables are primary keys while the others are foreign keys. The arrows show how the datasets are connected." align="center"/>
+<img src="man/figures/datarelationships.png" alt="The diagram shows how the `person`, `house`, and `trip` datasets can be joined by different key variables. The top of each table shows the dataset name. The grey-shaded variables are primary keys while the others are foreign keys. The arrows show how the datasets are connected. In the person table, the primary key is person_id and the foreign key is household_id. In the house table, the primary key is household_id. In the trip table, the foreign keys are person_id and household_id. The person and trip tables are connected by person_id and household_id. The house and person tables are connected by household_id. The house and trip tables are connected by household_id." align="center"/>
 
 -   Use `person_id` and `household_id` to join the `person` dataset and the `trip` dataset.
 -   Use `household_id` to join the `house` dataset and the `person` dataset.

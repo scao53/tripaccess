@@ -12,7 +12,7 @@ tripaccess
 
 ## Format
 
-A data frame with 86521 rows (each row is a person) and 40 columns
+A data frame with 86521 rows (each row is a person) and 41 columns
 
 - household_id:
 
@@ -185,6 +185,12 @@ A data frame with 86521 rows (each row is a person) and 40 columns
 
   Whether having other non home-based trips on the respondent's travel
   day.
+
+- person_weight:
+
+  Person weights that can be used for person-level estimates of
+  non-household and non-travel day items of interest, for example
+  workers by gender, drivers by annual miles estimated, etc.
 
 ## Source
 

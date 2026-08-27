@@ -88,7 +88,7 @@
 </h2>
 <ul>
 <li>
-<code>tripaccess</code>: tripaccess, constructed from the NHTS 2017 person and trip files, includes disability and other demographic as well as mobility and trip categorical and numeric variables. It has 86,521 rows (each row is a person, filtered to age 18-61) and 40 columns. It can be used for advanced exercises, e.g., data visualization, single table data wrangling, EDA, group comparisons, and categorical data analysis.</li>
+<code>tripaccess</code>: tripaccess, constructed from the NHTS 2017 person and trip files, includes disability and other demographic as well as mobility and trip categorical and numeric variables. It has 86,521 rows (each row is a person, filtered to age 18-61) and 41 columns. It includes person weights that can be used for person-level estimates, e.g., workers by gender, drivers by annual miles estimated, etc. It can be used for advanced exercises, e.g., data visualization, single table data wrangling, EDA, group comparisons, and categorical data analysis.</li>
 <li>
 <code>person</code>: person, constructed from the NHTS 2017 person file, includes disability, mobility, and other demographic categorical and numeric variables. It has 99,564 rows (each row is a person, filtered to age 18-61) and 32 columns. It can be used for advanced exercises, e.g., data visualization, single table analysis, EDA, group comparisons, and categorical data analysis. It can also be used together with the <code>house</code> and <code>trip</code> datasets for joining datasets (see Data Relationships).</li>
 <li>
@@ -177,7 +177,7 @@ The points show a strong positive relationship between the number of drivers in 
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
 </h2>
-<p>The <code>tripaccess</code>, <code>person</code>, <code>house</code>, and <code>trip</code> datasets are subsets of the NHTS data and unweighted. The results of your analyses cannot be generalized beyond the samples collected in these datasets.</p>
+<p>The <code>person</code>, <code>house</code>, and <code>trip</code> datasets are subsets of the NHTS data and unweighted. The results of your analyses cannot be generalized beyond the samples collected in these datasets. The <code>tripaccess</code> dataset, as a subset of the NHTS data, includes person weights that can be used for person-level estimates.</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -236,7 +236,7 @@ The points show a strong positive relationship between the number of drivers in 
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

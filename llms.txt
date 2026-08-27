@@ -65,7 +65,9 @@ library(tripaccess)
 - `tripaccess`: tripaccess, constructed from the NHTS 2017 person and
   trip files, includes disability and other demographic as well as
   mobility and trip categorical and numeric variables. It has 86,521
-  rows (each row is a person, filtered to age 18-61) and 40 columns. It
+  rows (each row is a person, filtered to age 18-61) and 41 columns. It
+  includes person weights that can be used for person-level estimates,
+  e.g., workers by gender, drivers by annual miles estimated, etc. It
   can be used for advanced exercises, e.g., data visualization, single
   table data wrangling, EDA, group comparisons, and categorical data
   analysis.
@@ -201,9 +203,11 @@ For more example usage of the `tripaccess`, `person`, `house`, and
 
 ## Disclaimer
 
-The `tripaccess`, `person`, `house`, and `trip` datasets are subsets of
-the NHTS data and unweighted. The results of your analyses cannot be
-generalized beyond the samples collected in these datasets.
+The `person`, `house`, and `trip` datasets are subsets of the NHTS data
+and unweighted. The results of your analyses cannot be generalized
+beyond the samples collected in these datasets. The `tripaccess`
+dataset, as a subset of the NHTS data, includes person weights that can
+be used for person-level estimates.
 
 ## References
 

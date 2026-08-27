@@ -21,7 +21,7 @@
     Code
       ncol(tripaccess)
     Output
-      [1] 40
+      [1] 41
 
 ---
 

@@ -8,6 +8,8 @@ CRAN release: 2026-07-04
 
 - Initial CRAN release.
 
-### Minor improvements
+## tripaccess 0.2.0
 
-- Add person weights to the tripaccess dataset.
+- Add person weights to the tripaccess dataset. They can be used for
+  person-level estimates, e.g., workers by gender, drivers by annual
+  miles estimated, etc.

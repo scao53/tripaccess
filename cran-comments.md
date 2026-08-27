@@ -3,3 +3,7 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+
+## Minor improvements
+
+* Add person weights to the tripaccess dataset. They can be used for person-level estimates, e.g., workers by gender, drivers by annual miles estimated, etc.

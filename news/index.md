@@ -1,6 +1,6 @@
 # Changelog
 
-## tripaccess (development version)
+## tripaccess 0.2.0
 
 ## tripaccess 0.1.0
 

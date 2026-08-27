@@ -4,6 +4,6 @@
 
 -   Initial CRAN release.
 
-## Minor improvements
+# tripaccess 0.2.0
 
 -   Add person weights to the tripaccess dataset.

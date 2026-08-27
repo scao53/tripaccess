@@ -7,3 +7,7 @@
 CRAN release: 2026-07-04
 
 - Initial CRAN release.
+
+### Minor improvements
+
+- Add person weights to the tripaccess dataset.

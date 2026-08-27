@@ -59,7 +59,8 @@ per_selected <- per |>
                 DELIVER, # Count of times purchased online for delivery in last 30 days
                 URBRUR, # Household in urban/rural area
                 EDUC, # Educational attainment
-                HHSTATE # State
+                HHSTATE, # State
+                WTPERFIN # Final person weight
   ) |>
   filter(YEARMILE >= -1) |> # filter to YEARMILE >= -1
   filter(PTUSED >= 0) |>
@@ -192,7 +193,8 @@ per_selected_join_rename <- per_selected_join |>
          sum_trip_duration_in_minutes = Sum_trip_duration,
          trip_purpose = TRIPPURP,
          urban_rural = URBRUR,
-         state = HHSTATE
+         state = HHSTATE,
+         person_weight = WTPERFIN
   ) |>
   dplyr::select(-MEDCOND)
 
@@ -202,7 +204,8 @@ per_selected_join_wider <- per_selected_join_rename |>
               values_from = trip_purpose_val)
 per_selected_join_wider[is.na(per_selected_join_wider)] <- 0
 per_selected_join_final <- per_selected_join_wider |>
-  group_by(household_id, person_id, travel_disability, sex, race, hispanic_ethnicity, nativity, age, education, self_rated_health, employment_status, household_income, household_structure, population_density, urban_rural, state, driver_status, cane, manual_wheelchair, crutches, dog, motorized_wheelchair, scooter, white_cane, walker, other_accommodation) |>
+  mutate(person_weight = as.character(person_weight)) |>
+  group_by(household_id, person_id, travel_disability, sex, race, hispanic_ethnicity, nativity, age, education, self_rated_health, employment_status, household_income, household_structure, population_density, urban_rural, state, driver_status, cane, manual_wheelchair, crutches, dog, motorized_wheelchair, scooter, white_cane, walker, other_accommodation, person_weight) |>
   dplyr::summarize(yearly_miles_personally_driven = sum(yearly_miles_personally_driven),
                    count_of_public_transit_usage = sum(count_of_public_transit_usage),
                    count_of_rideshare_app_usage = sum(count_of_rideshare_app_usage),
@@ -218,11 +221,12 @@ per_selected_join_final <- per_selected_join_wider |>
                    other_non_home_based_trip = sum(other_non_home_based_trip),
                    shopping_trip = sum(shopping_trip)
   ) |>
-  ungroup()
+  ungroup() |>
+  mutate(person_weight = as.numeric(person_weight))
 per_selected_join_final <- per_selected_join_final |>
   mutate(across(c(other_home_based_trip:shopping_trip), ~ifelse(.x==1, TRUE, FALSE)))
 
-col_order <- c("household_id", "person_id", "travel_disability", "sex", "race", "hispanic_ethnicity", "nativity", "age", "education", "self_rated_health", "employment_status", "household_income", "household_structure", "population_density", "urban_rural", "state", "driver_status", "cane", "manual_wheelchair", "crutches", "dog", "motorized_wheelchair", "scooter", "white_cane", "walker", "other_accommodation", "yearly_miles_personally_driven", "count_of_public_transit_usage", "count_of_rideshare_app_usage", "count_of_bike_trips", "count_of_walk_trips", "count_of_online_delivery", "avg_num_of_people_on_trip", "avg_trip_distance_in_miles", "avg_trip_duration_in_minutes", "shopping_trip", "social_recreational_trip", "other_home_based_trip", "work_trip", "other_non_home_based_trip")
+col_order <- c("household_id", "person_id", "travel_disability", "sex", "race", "hispanic_ethnicity", "nativity", "age", "education", "self_rated_health", "employment_status", "household_income", "household_structure", "population_density", "urban_rural", "state", "driver_status", "cane", "manual_wheelchair", "crutches", "dog", "motorized_wheelchair", "scooter", "white_cane", "walker", "other_accommodation", "yearly_miles_personally_driven", "count_of_public_transit_usage", "count_of_rideshare_app_usage", "count_of_bike_trips", "count_of_walk_trips", "count_of_online_delivery", "avg_num_of_people_on_trip", "avg_trip_distance_in_miles", "avg_trip_duration_in_minutes", "shopping_trip", "social_recreational_trip", "other_home_based_trip", "work_trip", "other_non_home_based_trip", "person_weight")
 
 tripaccess <- per_selected_join_final[, col_order]
 

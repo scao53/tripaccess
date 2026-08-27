@@ -5,7 +5,7 @@
 \alias{tripaccess}
 \title{Tripaccess data}
 \format{
-A data frame with 86521 rows (each row is a person) and 40 columns
+A data frame with 86521 rows (each row is a person) and 41 columns
 \describe{
 \item{household_id}{Household identifier.}
 \item{person_id}{Person identifier.}
@@ -47,6 +47,7 @@ A data frame with 86521 rows (each row is a person) and 40 columns
 \item{other_home_based_trip}{Whether having other home-based trips on the respondent's travel day.}
 \item{work_trip}{Whether having work trips on the respondent's travel day.}
 \item{other_non_home_based_trip}{Whether having other non home-based trips on the respondent's travel day.}
+\item{person_weight}{Person weights that can be used for person-level estimates of non-household and non-travel day items of interest, for example workers by gender, drivers by annual miles estimated, etc.}
 }
 }
 \source{

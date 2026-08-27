@@ -52,7 +52,7 @@ library(tripaccess)
 
 ## Datasets Included
 
--   `tripaccess`: tripaccess, constructed from the NHTS 2017 person and trip files, includes disability and other demographic as well as mobility and trip categorical and numeric variables. It has 86,521 rows (each row is a person, filtered to age 18-61) and 40 columns. It can be used for advanced exercises, e.g., data visualization, single table data wrangling, EDA, group comparisons, and categorical data analysis.
+-   `tripaccess`: tripaccess, constructed from the NHTS 2017 person and trip files, includes disability and other demographic as well as mobility and trip categorical and numeric variables. It has 86,521 rows (each row is a person, filtered to age 18-61) and 41 columns. It includes person weights that can be used for person-level estimates, e.g., workers by gender, drivers by annual miles estimated, etc. It can be used for advanced exercises, e.g., data visualization, single table data wrangling, EDA, group comparisons, and categorical data analysis.
 -   `person`: person, constructed from the NHTS 2017 person file, includes disability, mobility, and other demographic categorical and numeric variables. It has 99,564 rows (each row is a person, filtered to age 18-61) and 32 columns. It can be used for advanced exercises, e.g., data visualization, single table analysis, EDA, group comparisons, and categorical data analysis. It can also be used together with the `house` and `trip` datasets for joining datasets (see Data Relationships).
 -   `house`: house, constructed from the NHTS 2017 house file, includes household characteristics categorical and numeric variables. It has 129,695 rows (each row is a household) and 9 columns. It can be used for beginners' exercises, e.g., data visualization, data wrangling, and EDA. It can also be used together with the `person` and `trip` datasets for joining datasets (see Data Relationships).
 -   `trip`: trip, constructed from the NHTS 2017 trip file, includes trip related categorical and numeric variables. It has 921,590 rows (each row is a trip) and 8 columns. It can be used for beginners' exercises, e.g., data visualization, data wrangling, EDA, and simple linear regression. It can also be used together with the `person` and `house` datasets for joining datasets (see Data Relationships).
@@ -142,7 +142,7 @@ For more example usage of the `tripaccess`, `person`, `house`, and `trip` datase
 
 ## Disclaimer
 
-The `tripaccess`, `person`, `house`, and `trip` datasets are subsets of the NHTS data and unweighted. The results of your analyses cannot be generalized beyond the samples collected in these datasets.
+The `person`, `house`, and `trip` datasets are subsets of the NHTS data and unweighted. The results of your analyses cannot be generalized beyond the samples collected in these datasets. The `tripaccess` dataset, as a subset of the NHTS data, includes person weights that can be used for person-level estimates. 
 
 ## References
 

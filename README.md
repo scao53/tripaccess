@@ -202,7 +202,7 @@ be used for person-level estimates.
 
 Federal Highway Administration. (2017). 2017 National Household Travel
 Survey, U.S. Department of Transportation, Washington, DC. Available
-online: <http://nhts.ornl.gov>.
+online: <https://nhts.ornl.gov>.
 
 Levine, K., & Karner, A. (2023). Approaching accessibility: Four
 opportunities to address the needs of disabled people in transportation

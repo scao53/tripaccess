@@ -13,7 +13,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/scao53/tripaccess/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/scao53/tripaccess/blob/v0.2.0/DESCRIPTION)
 
 Cao S (2026). *tripaccess: American Travel Behavior and Access
 Datasets*. R package version 0.2.0,

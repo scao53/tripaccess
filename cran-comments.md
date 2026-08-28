@@ -7,3 +7,7 @@
 ## Minor improvements
 
 * Add person weights to the tripaccess dataset. They can be used for person-level estimates, e.g., workers by gender, drivers by annual miles estimated, etc.
+
+## Resubmission
+
+* Fixed the NHTS URL. Changed http://nhts.ornl.gov to https://nhts.ornl.gov/ in README.md and related documents.
